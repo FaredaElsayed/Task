@@ -24,7 +24,8 @@ const resources = {
       profile_notes: "Profile Notes",
       watch_list: "Watch List",
       date_of_birth: "Date OF Birth",
-       gender:"Gender"
+      gender: "Gender",
+      address:"Address",
     },
   },
   ar: {
@@ -49,7 +50,8 @@ const resources = {
       profile_notes: "ملاحظات الملف الشخصي",
       watch_list: "قائمة المراقبة",
       date_of_birth: "تاريخ الميلاد",
-      gender:"النوع"
+      gender: "النوع",
+      address: "العنوان",
     },
   },
 };

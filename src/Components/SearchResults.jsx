@@ -76,7 +76,14 @@ const SearchResults = () => {
                     <strong>{t("name")}:</strong> {result.name} <br />
                     <strong>{t("score")}:</strong> {Number(result?.score)}%
                   </header>
-
+                  <div className={styles.resultMeta}>
+                    <span className={styles.resultType}>
+                      {result?.entity_type}
+                    </span>
+                    <span className={styles.resultStatus}>
+                      {result?.active_status}
+                    </span>
+                  </div>
                   {selectedResult === index && (
                     <div className={styles.resultDetails}>
                       {result?.nat && (
@@ -104,7 +111,7 @@ const SearchResults = () => {
                       {result?.descriptions &&
                         result?.descriptions.length > 0 && (
                           <div className={styles.descriptions}>
-                            <h4>{t("descriptions")}:</h4>
+                            <h4>{t("description")}:</h4>
                             <ul>
                               {result?.descriptions?.map((desc, i) => (
                                 <li key={i}>
