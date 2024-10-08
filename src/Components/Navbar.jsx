@@ -1,6 +1,6 @@
 // import React from "react";
-// import LanguageSwitcher from "./LanguageSwitcher"; 
-// import styles from "./CSS/Navbar.module.css"; 
+// import LanguageSwitcher from "./LanguageSwitcher";
+// import styles from "./CSS/Navbar.module.css";
 
 // const Navbar = () => {
 //   return (
@@ -21,6 +21,8 @@
 
 // export default Navbar;
 import React, { useContext } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { ThemeContext } from "./Contexts/ThemeContext"; // Import ThemeContext
 import styles from "./CSS/Navbar.module.css";
@@ -40,8 +42,20 @@ const Navbar = () => {
         />
       </div>
       <div className={styles.controls}>
-        <button onClick={toggleTheme}>
-          {isDarkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+        <button
+          onClick={toggleTheme}
+          className={styles.themeToggleButton}
+          style={{ background: "transparent", border: "none" }}
+        >
+          {isDarkMode ? (
+            <>
+              <FontAwesomeIcon icon={faSun} size="lg" />
+            </>
+          ) : (
+            <>
+              <FontAwesomeIcon icon={faMoon} size="lg" />
+            </>
+          )}
         </button>
         <LanguageSwitcher />
       </div>

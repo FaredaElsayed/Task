@@ -8,7 +8,7 @@
   background-color: #0069d9;
   color: white;
   border: none;
-  padding: .8rem 1.2rem;
+  padding: 0.8rem 1.2rem;
   margin: 0 1rem;
   border-radius: 50px; /* Softer, rounded buttons */
   font-size: 1rem; /* Slightly larger text */
@@ -19,7 +19,7 @@
 
 .languageButton:hover {
   background-color: #0056b3;
-  transform: translateY(-3px); 
+  transform: translateY(-3px);
 }
 
 .languageButton:focus {
@@ -28,12 +28,14 @@
 }
 
 @media (max-width: 600px) {
-  .languageSwitcher{
+  .languageSwitcher {
     flex-direction: column;
-    gap: .5rem;
+    gap: 0.5rem;
+  }
+  body.dark-mode .searchForm .submitButton {
+    border: 1px solid #1f1f1f;
   }
 }
-
 
 /* Dark mode */
 body.dark-mode .searchForm {
