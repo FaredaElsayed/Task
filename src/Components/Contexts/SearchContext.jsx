@@ -1,4 +1,5 @@
 import React, { createContext, useState } from "react";
+
 export const SearchContext = createContext();
 
 export const SearchProvider = ({ children }) => {
@@ -7,17 +8,15 @@ export const SearchProvider = ({ children }) => {
     mname: "",
     lname: "",
     nat: "",
-    description: "",
-    placeOfBirth: "",
-    score: "",
+    // Removed fields that are not part of the form submission
   });
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [searchHistory, setSearchHistory] = useState([]);
+
   const [error, setError] = useState("");
   const [isFormVisible, setFormVisible] = useState(true);
 
-  //fetch results from the API
+  // Fetch results from the API
   const fetchResults = async () => {
     setLoading(true);
     setError("");
@@ -27,14 +26,17 @@ export const SearchProvider = ({ children }) => {
     console.log("Form Data Sent: ", formData, requestBody);
 
     try {
-      const response = await fetch("http://localhost:900/individuals", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify(requestBody),
-      });
+      const response = await fetch(
+        "https://develop.thamar.sa/api/v1/integration/focal/screen/individual",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(requestBody),
+        }
+      );
 
       if (!response.ok) {
         const errorData = await response.json();
@@ -43,9 +45,22 @@ export const SearchProvider = ({ children }) => {
       }
 
       const data = await response.json();
-      setResults([data]);
+      const apiResults = data.screen_result.map((result) => ({
+        name: result.name,
+        score: result.score,
+        country: result.nat,
+        birthDates: result.dates.map((date) => date.date).join(", ") || "",
+        watchList: result.watch_list.name,
+        description: result.descriptions
+          .map((desc) => desc.description1)
+          .join(", "),
+        profileNotes: result.profile_notes,
+      }));
+
+      // Set results to the transformed data
+      setResults(apiResults);
       console.log("API Response: ", data);
-      setSearchHistory((prev) => [...prev, formData]);
+
       setFormVisible(false);
     } catch (err) {
       setError(err.message);
@@ -76,22 +91,9 @@ export const SearchProvider = ({ children }) => {
       mname: "",
       lname: "",
       nat: "",
-      description: "",
-      placeOfBirth: "",
-      score: "",
     });
     setResults([]);
     setError("");
-  };
-
-  // Function to handle clicking on search history
-  const handleSearchFromHistory = (search) => {
-    setFormData(search);
-  };
-
-  // Function to clear search history
-  const handleClearHistory = () => {
-    setSearchHistory([]);
   };
 
   return (
@@ -106,10 +108,6 @@ export const SearchProvider = ({ children }) => {
         isFormVisible,
         handleSubmit,
         handleShowForm,
-        searchHistory,
-        setSearchHistory,
-        handleSearchFromHistory,
-        handleClearHistory,
       }}
     >
       {children}

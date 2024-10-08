@@ -113,6 +113,7 @@
   height: 1.5rem;
   animation: spin 1s linear infinite;
   margin: 0 auto;
+  margin-bottom: 1rem;
 }
 
 @keyframes spin {

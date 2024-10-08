@@ -18,7 +18,10 @@ const resources = {
       search_again: "Search Again",
       error_message: "Error fetching results. Please try again.",
       search_history: "Search History",
-      clear_history: "Clear Search History"
+      clear_history: "Clear Search History",
+      name: "Full Name",
+      profile_notes: "Profile Notes",
+      watch_list: "Watch List",
     },
   },
   ar: {
@@ -38,6 +41,9 @@ const resources = {
       search_history: "تاريخ البحث",
       clear_history: "مسح تاريخ البحث",
       error_message: "حدث خطأ أثناء جلب النتائج. يرجى المحاولة مرة أخرى.",
+      name: "الاسم الكامل",
+      profile_notes: "ملاحظات الملف الشخصي",
+      watch_list: "قائمة المراقبة",
     },
   },
 };
