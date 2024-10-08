@@ -41,7 +41,7 @@ export const SearchProvider = ({ children }) => {
       if (!response.ok) {
         const errorData = await response.json();
         setError(errorData.message || "An error occurred while fetching data.");
-        throw new Error("Network response was not ok");
+        throw new Error("Please Enter valid data");
       }
 
       const data = await response.json();
@@ -49,7 +49,7 @@ export const SearchProvider = ({ children }) => {
         name: result.name,
         score: result.score,
         country: result.nat,
-        birthDates: result.dates.map((date) => date.date).join(", ") || "",
+        birthDates: result.date,
         watchList: result.watch_list.name,
         description: result.descriptions
           .map((desc) => desc.description1)

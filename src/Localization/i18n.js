@@ -20,6 +20,7 @@ const resources = {
       search_history: "Search History",
       clear_history: "Clear Search History",
       name: "Full Name",
+      Dates: "Dates",
       profile_notes: "Profile Notes",
       watch_list: "Watch List",
     },
@@ -42,15 +43,17 @@ const resources = {
       clear_history: "مسح تاريخ البحث",
       error_message: "حدث خطأ أثناء جلب النتائج. يرجى المحاولة مرة أخرى.",
       name: "الاسم الكامل",
+      Dates: "التواريخ",
       profile_notes: "ملاحظات الملف الشخصي",
       watch_list: "قائمة المراقبة",
     },
   },
 };
+const savedLang = localStorage.getItem("lang") || "en"; 
 
 i18n.use(initReactI18next).init({
   resources,
-  lng: "en",
+  lng: savedLang, 
   fallbackLng: "en",
   interpolation: {
     escapeValue: false,

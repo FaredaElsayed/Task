@@ -1,8 +1,7 @@
-// SearchFormFields.js
 import React, { useContext } from "react";
-import { useTranslation } from "react-i18next"; // Import the hook
-import styles from "./CSS/SearchForm.module.css"; // Import the CSS module
-import { SearchContext } from "./Contexts/SearchContext";
+import { useTranslation } from "react-i18next"; 
+import styles from "../CSS/SearchForm.module.css"; 
+import { SearchContext } from "../Contexts/SearchContext";
 
 const SearchFormFields = () => {
   const { t } = useTranslation();

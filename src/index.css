@@ -11,3 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+textarea:-webkit-autofill,
+input:-webkit-autofill {
+  -webkit-text-fill-color: inherit;
+  -webkit-background-clip: text;
+}
