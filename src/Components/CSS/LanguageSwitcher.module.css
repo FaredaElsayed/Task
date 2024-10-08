@@ -33,3 +33,37 @@
     gap: .5rem;
   }
 }
+
+
+/* Dark mode */
+body.dark-mode .searchForm {
+  background-color: #2c2c2c;
+}
+
+body.dark-mode .searchForm .title,
+body.dark-mode .searchForm .label {
+  color: #ddd;
+}
+
+body.dark-mode .searchForm .input {
+  background-color: #444;
+  border: 1px solid #666;
+  color: #fff;
+}
+
+body.dark-mode .searchForm .submitButton {
+  background-color: #007bff;
+}
+
+body.dark-mode .searchForm .submitButton:hover {
+  background-color: #0056b3;
+}
+
+body.dark-mode .resultsItem {
+  background-color: #1f1f1f;
+}
+
+body.dark-mode .errorMessage {
+  background-color: #9c3e3e;
+  border: 1px solid #7a2c2c;
+}

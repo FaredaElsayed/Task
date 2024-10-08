@@ -1,6 +1,8 @@
+
 * {
   box-sizing: border-box;
 }
+
 .searchForm {
   display: flex;
   flex-direction: column;
@@ -10,9 +12,16 @@
   max-width: 95%;
   width: 32rem;
   margin: 2rem auto;
-  background-color: #f1f5f9;
+  background-color: #f1f5f9; /* Light mode background */
+  color: #333; /* Light mode text color */
   box-shadow: 0 0.375rem 0.75rem rgba(0, 0, 0, 0.05);
-  transition: box-shadow 0.3s ease;
+  transition: box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.searchForm.dark {
+  background-color: #1e1e2f; /* Dark mode background */
+  color: #e0e0e0; /* Dark mode text color */
+  border: 1px solid #444; /* Dark mode border color */
 }
 
 .searchForm:hover {
@@ -22,27 +31,35 @@
 .searchForm .title {
   text-align: center;
   font-size: 1.5rem;
-  color: #333;
   margin-bottom: 1.5rem;
 }
 
 .searchForm .formGroup {
   margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
   padding: 0.2em;
 }
 
 .searchForm .label {
-  color: #555;
   font-weight: 700;
 }
 
 .searchForm .input {
   width: 100%;
   padding: 0.625rem;
-  border: 1px solid #ddd;
+  border: 1px solid #ddd; /* Light mode input border */
   border-radius: 0.375rem;
   font-size: 0.875rem;
-  transition: border-color 0.3s ease;
+  transition: border-color 0.3s ease, background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+.searchForm .input.dark {
+  background-color: #2a2a44; /* Dark mode input background */
+  color: #ffffff; /* Dark mode input text color */
+  border-color: #555; /* Dark mode input border color */
 }
 
 .searchForm .input:focus {
@@ -53,7 +70,7 @@
 .searchForm .submitButton {
   width: 100%;
   padding: 0.75rem;
-  background-color: #0069d9;
+  background-color: #007bff; /* Light mode button background */
   color: white;
   border: none;
   border-radius: 0.375rem;
@@ -65,52 +82,26 @@
 }
 
 .searchForm .submitButton:hover {
-  background-color: #0056b3;
+  background-color: #0056b3; /* Light mode button hover */
   transform: translateY(-0.125rem);
 }
 
-.searchForm .results {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+.searchForm .submitButton.dark {
+  background-color: #3f51b5; /* Dark mode button background */
 }
 
-.searchForm .resultsTitle {
-  font-weight: 700;
-  color: #333;
-  margin-bottom: 1rem;
-  font-size: 1.5rem;
-  text-align: center;
-}
-
-.searchForm .resultsList {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
-
-.searchForm .resultsItem {
-  padding: 0.7rem;
-  background-color: #ffffff;
-  border-radius: 0.5rem;
-  margin-bottom: 0.7rem;
-  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
-}
-
-.searchForm .resultsItem:hover {
-  transform: translateY(-0.05rem);
-  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+.searchForm .submitButton.dark:hover {
+  background-color: #303f9f; /* Dark mode button hover */
 }
 
 .searchForm .errorMessage {
-  color: red;
+  color: #ff4d4d; /* Bright red for error messages */
   margin-bottom: 0.5rem;
   text-align: center;
   font-weight: bold;
   margin-top: 1rem;
   padding: 0.5rem;
-  background-color: #ffe6e6;
+  background-color: rgba(255, 77, 77, 0.1); /* Light red background */
   border: 1px solid #ffcccc;
   border-radius: 0.5rem;
 }
@@ -129,43 +120,4 @@
   to {
     transform: rotate(360deg);
   }
-}
-
-.searchHistory {
-  margin-top: 20px;
-  border-top: 1px solid #ccc;
-  padding-top: 10px;
-}
-
-.searchHistory h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.searchHistory ul {
-  list-style: none;
-  padding: 0;
-}
-
-.searchHistory li {
-  cursor: pointer;
-  transition: background-color 0.2s;
-}
-
-.searchHistory li:hover {
-  background-color: #f1f1f1; /* Highlight on hover */
-}
-
-.clearButton {
-  margin-top: 10px;
-  padding: 8px 12px;
-  background-color: #dc3545;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-.clearButton:hover {
-  background-color: #c82333;
 }

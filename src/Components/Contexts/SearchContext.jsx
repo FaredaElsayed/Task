@@ -1,6 +1,4 @@
-// SearchContext.js
 import React, { createContext, useState } from "react";
-
 export const SearchContext = createContext();
 
 export const SearchProvider = ({ children }) => {
@@ -18,25 +16,25 @@ export const SearchProvider = ({ children }) => {
   const [searchHistory, setSearchHistory] = useState([]);
   const [error, setError] = useState("");
   const [isFormVisible, setFormVisible] = useState(true);
+
+  //fetch results from the API
   const fetchResults = async () => {
     setLoading(true);
     setError("");
-    setResults([]); // Clear previous results
-
-    console.log("Form Data Sent: ", formData); // Log form data
+    setResults([]);
+    const { fname, mname, lname, nat } = formData;
+    const requestBody = { fname, mname, lname, nat };
+    console.log("Form Data Sent: ", formData, requestBody);
 
     try {
-      const response = await fetch(
-        "https://jsonplaceholder.typicode.com/posts",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify(formData), // Send the form data
-        }
-      );
+      const response = await fetch("http://localhost:900/individuals", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(requestBody),
+      });
 
       if (!response.ok) {
         const errorData = await response.json();
@@ -46,11 +44,11 @@ export const SearchProvider = ({ children }) => {
 
       const data = await response.json();
       setResults([data]);
-      console.log("API Response: ", data); // Log API response
-      setSearchHistory((prev) => [...prev, formData]); // Save to search history
-      setFormVisible(false); // Hide the form after submission
+      console.log("API Response: ", data);
+      setSearchHistory((prev) => [...prev, formData]);
+      setFormVisible(false);
     } catch (err) {
-      setError(err.message); // Set the error message
+      setError(err.message);
     } finally {
       setLoading(false);
     }
@@ -58,15 +56,15 @@ export const SearchProvider = ({ children }) => {
 
   // Function to handle form submission
   const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent default form submission
-    fetchResults(); // Call the fetch results function
+    e.preventDefault();
+    fetchResults();
   };
 
   // Function to handle input changes
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value, // Update form data based on input name
+      [e.target.name]: e.target.value,
     });
   };
 
@@ -82,24 +80,26 @@ export const SearchProvider = ({ children }) => {
       placeOfBirth: "",
       score: "",
     });
-    setResults([]); // Clear results when showing form
-    setError(""); // Clear any error messages
+    setResults([]);
+    setError("");
   };
 
   // Function to handle clicking on search history
   const handleSearchFromHistory = (search) => {
-    setFormData(search); // Populate form with previous search data
+    setFormData(search);
   };
 
   // Function to clear search history
   const handleClearHistory = () => {
-    setSearchHistory([]); // Clear the search history
+    setSearchHistory([]);
   };
+
   return (
     <SearchContext.Provider
       value={{
         formData,
         handleChange,
+        setFormData,
         results,
         loading,
         error,
@@ -107,6 +107,7 @@ export const SearchProvider = ({ children }) => {
         handleSubmit,
         handleShowForm,
         searchHistory,
+        setSearchHistory,
         handleSearchFromHistory,
         handleClearHistory,
       }}
