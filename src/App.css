@@ -1,12 +1,17 @@
-.App {
-  text-align: center;
-}
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
 }
+.App {
+  text-align: center;
+  font-family: "Arial", sans-serif;
+  background-color: #f1f5f9; /* Same as the form background */
+  min-height: 100vh;
+}
 
+.mainContent {
+  padding: 30px;
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
