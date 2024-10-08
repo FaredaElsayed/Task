@@ -1,16 +1,15 @@
 import React, { useEffect } from "react";
-import { useTranslation } from "react-i18next"; // Import the hook
+import { useTranslation } from "react-i18next"; 
 import styles from "../CSS/LanguageSwitcher.module.css"
 const LanguageSwitcher = () => {
   const { i18n } = useTranslation();
 
   const changeLanguage = (lang) => {
     i18n.changeLanguage(lang);
-    localStorage.setItem("lang", lang); // Store the selected language in localStorage
+    localStorage.setItem("lang", lang); 
   };
 
   useEffect(() => {
-    // Check if there's a language stored in localStorage and set it
     const storedLang = localStorage.getItem("lang");
     if (storedLang) {
       i18n.changeLanguage(storedLang);

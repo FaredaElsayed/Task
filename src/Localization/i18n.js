@@ -23,6 +23,8 @@ const resources = {
       Dates: "Dates",
       profile_notes: "Profile Notes",
       watch_list: "Watch List",
+      date_of_birth: "Date OF Birth",
+       gender:"Gender"
     },
   },
   ar: {
@@ -46,14 +48,16 @@ const resources = {
       Dates: "التواريخ",
       profile_notes: "ملاحظات الملف الشخصي",
       watch_list: "قائمة المراقبة",
+      date_of_birth: "تاريخ الميلاد",
+      gender:"النوع"
     },
   },
 };
-const savedLang = localStorage.getItem("lang") || "en"; 
+const savedLang = localStorage.getItem("lang") || "en";
 
 i18n.use(initReactI18next).init({
   resources,
-  lng: savedLang, 
+  lng: savedLang,
   fallbackLng: "en",
   interpolation: {
     escapeValue: false,

@@ -8,7 +8,7 @@ import { ThemeContext } from "../Contexts/ThemeContext";
 const SearchForm = () => {
   const { t, i18n } = useTranslation();
   const { isFormVisible, handleSubmit } = useContext(SearchContext);
-  const { isDarkMode } = useContext(ThemeContext); // Get theme state
+  const { isDarkMode } = useContext(ThemeContext); 
 
   return (
     <section

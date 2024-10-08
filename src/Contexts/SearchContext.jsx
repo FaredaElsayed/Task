@@ -8,7 +8,6 @@ export const SearchProvider = ({ children }) => {
     mname: "",
     lname: "",
     nat: "",
-    // Removed fields that are not part of the form submission
   });
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -45,17 +44,7 @@ export const SearchProvider = ({ children }) => {
       }
 
       const data = await response.json();
-      const apiResults = data.screen_result.map((result) => ({
-        name: result.name,
-        score: result.score,
-        country: result.nat,
-        birthDates: result.date,
-        watchList: result.watch_list.name,
-        description: result.descriptions
-          .map((desc) => desc.description1)
-          .join(", "),
-        profileNotes: result.profile_notes,
-      }));
+      const apiResults = data.screen_result;
 
       // Set results to the transformed data
       setResults(apiResults);

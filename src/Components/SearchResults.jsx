@@ -24,7 +24,7 @@ const SearchResults = () => {
   };
   const getPageNumbers = () => {
     const pageNumbers = [];
-    const maxPagesToShow = 3; 
+    const maxPagesToShow = 3;
     let startPage = Math.max(1, currentPage - Math.floor(maxPagesToShow / 2));
     let endPage = Math.min(totalPages, startPage + maxPagesToShow - 1);
     if (endPage - startPage < maxPagesToShow - 1) {
@@ -34,13 +34,13 @@ const SearchResults = () => {
       pageNumbers.push(i);
     }
     if (startPage > 1) {
-      pageNumbers.unshift(1); 
-      if (startPage > 2) pageNumbers.unshift("..."); 
+      pageNumbers.unshift(1);
+      if (startPage > 2) pageNumbers.unshift("...");
     }
 
     if (endPage < totalPages) {
-      if (endPage < totalPages - 1) pageNumbers.push("..."); 
-      pageNumbers.push(totalPages); 
+      if (endPage < totalPages - 1) pageNumbers.push("...");
+      pageNumbers.push(totalPages);
     }
 
     return pageNumbers;
@@ -74,38 +74,56 @@ const SearchResults = () => {
                     }
                   >
                     <strong>{t("name")}:</strong> {result.name} <br />
-                    <strong>{t("score")}:</strong> {Number(result.score)}%
+                    <strong>{t("score")}:</strong> {Number(result?.score)}%
                   </header>
 
                   {selectedResult === index && (
-                    <div
-                      className={`${styles.details} ${
-                        isDarkMode ? styles.dark : styles.light
-                      }`}
-                    >
-                      {result.country && (
-                        <p>
-                          <strong>{t("nationality")}:</strong> {result.country}
-                        </p>
-                      )}
-                      {result.birthDates && (
-                        <p>
-                          <strong>{t("Dates")}:</strong> {result.birthDates}
+                    <div className={styles.resultDetails}>
+                      {result?.nat && (
+                        <p className={styles.detailItem}>
+                          <strong>{t("nationality")}:</strong> {result?.nat}
                         </p>
                       )}
 
-                      {result.watchList && (
-                        <p>
-                          <strong>{t("watch_list")}:</strong>
-                          {result.watchList}
+                      {result?.watch_list && (
+                        <p className={styles.detailItem}>
+                          <strong>{t("watch_list")}:</strong>{" "}
+                          {result?.watch_list?.name}
                         </p>
                       )}
-
-                      {result.description && (
-                        <p>
-                          <strong>{t("description")}:</strong>
-                          {result.description}
+                      {result.gender && (
+                        <p className={styles.detailItem}>
+                          <strong>{t("gender")}:</strong> {result?.gender}
                         </p>
+                      )}
+                      {result?.date && (
+                        <p className={styles.detailItem}>
+                          <strong>{t("date_of_birth")}:</strong> {result?.date}
+                        </p>
+                      )}
+                      {result?.descriptions &&
+                        result?.descriptions.length > 0 && (
+                          <div className={styles.descriptions}>
+                            <h4>{t("descriptions")}:</h4>
+                            <ul>
+                              {result?.descriptions?.map((desc, i) => (
+                                <li key={i}>
+                                  {desc?.description1}, {desc?.description2},{" "}
+                                  {desc?.description3}
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                      {result?.addresses && result?.addresses.length > 0 && (
+                        <div className={styles.address}>
+                          <h4>{t("address")}:</h4>
+                          <p>
+                            {result?.addresses?.[0]?.street},{" "}
+                            {result?.addresses?.[0]?.city},{" "}
+                            {result?.addresses?.[0]?.country}
+                          </p>
+                        </div>
                       )}
                     </div>
                   )}
@@ -114,12 +132,11 @@ const SearchResults = () => {
             ))}
           </ul>
 
-       
           <div className={styles.pagination}>
             <button
               className={styles.pageButton}
               onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
-              disabled={currentPage === 1} 
+              disabled={currentPage === 1}
             >
               &laquo;
             </button>
@@ -130,7 +147,7 @@ const SearchResults = () => {
                   typeof pageNumber === "number"
                     ? pageNumber
                     : `ellipsis-${index}`
-                } 
+                }
                 className={`${styles.pageButton} ${
                   pageNumber === currentPage ? styles.activePage : ""
                 }`}
@@ -139,7 +156,7 @@ const SearchResults = () => {
                     ? handlePageChange(pageNumber)
                     : null
                 }
-                disabled={typeof pageNumber !== "number"} 
+                disabled={typeof pageNumber !== "number"}
               >
                 {pageNumber}
               </button>
@@ -150,7 +167,7 @@ const SearchResults = () => {
               onClick={() =>
                 setCurrentPage((prev) => Math.min(prev + 1, totalPages))
               }
-              disabled={currentPage === totalPages} 
+              disabled={currentPage === totalPages}
             >
               &raquo;
             </button>
