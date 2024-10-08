@@ -1,28 +1,35 @@
 .languageSwitcher {
   display: flex;
-  justify-content: center; 
-  margin: 20px 0; 
+  justify-content: center;
+  margin: 1rem 0;
 }
 
 .languageButton {
-   background-color: #0069d9;
-  color: white; 
-  border: none; 
-  padding: 12px 20px;
-  margin: 0 10px; 
+  background-color: #0069d9;
+  color: white;
+  border: none;
+  padding: .8rem 1.2rem;
+  margin: 0 1rem;
   border-radius: 50px; /* Softer, rounded buttons */
-  font-size: 16px; /* Slightly larger text */
+  font-size: 1rem; /* Slightly larger text */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
-  cursor: pointer; 
+  cursor: pointer;
   transition: background-color 0.3s, transform 0.2s ease; /* Add a smooth hover effect */
 }
 
 .languageButton:hover {
- background-color: #0056b3; 
-  transform: translateY(-3px); /* Lift effect on hover */
+  background-color: #0056b3;
+  transform: translateY(-3px); 
 }
 
 .languageButton:focus {
   outline: none;
-  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5); /* Focus effect for accessibility */
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.5);
+}
+
+@media (max-width: 600px) {
+  .languageSwitcher{
+    flex-direction: column;
+    gap: .5rem;
+  }
 }
