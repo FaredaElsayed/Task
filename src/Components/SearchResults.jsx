@@ -110,25 +110,23 @@ const SearchResults = () => {
                       )}
                       {result?.descriptions &&
                         result?.descriptions.length > 0 && (
-                          <div className={styles.descriptions}>
+                          <div className={styles.detailItem}>
                             <h4>{t("description")}:</h4>
                             <ul>
                               {result?.descriptions?.map((desc, i) => (
                                 <li key={i}>
-                                  {desc?.description1}, {desc?.description2},{" "}
-                                  {desc?.description3}
+                                  {desc?.description1}, {desc?.description2}
+                                  {desc?.description3}.
                                 </li>
                               ))}
                             </ul>
                           </div>
                         )}
                       {result?.addresses && result?.addresses.length > 0 && (
-                        <div className={styles.address}>
+                        <div className={styles.detailItem}>
                           <h4>{t("address")}:</h4>
                           <p>
-                            {result?.addresses?.[0]?.street},{" "}
-                            {result?.addresses?.[0]?.city},{" "}
-                            {result?.addresses?.[0]?.country}
+                            {`${result?.addresses?.[0]?.street} ${result?.addresses?.[0]?.city} ${result?.addresses?.[0]?.country}`.trim()}
                           </p>
                         </div>
                       )}
