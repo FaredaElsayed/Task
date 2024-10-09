@@ -1,32 +1,3 @@
-/* .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #0069d9;
-  width: 100%;
-  padding: 0.9rem 2rem;
-  color: white;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  border-radius: 0 0 8px 8px;
-}
-
-.navbar .logo {
-  flex-shrink: 0;
-}
-
-.navbar .logoImage {
-  height: 4em;
-  min-height: 3em;
-
-  width: auto;
-}
-
-.navbar .languageSwitcherContainer {
-  display: flex;
-  gap: 10px;
-} */
-/* src/Components/CSS/Navbar.module.css */
-
 .navbar {
   display: flex;
   justify-content: space-between;
