@@ -7,7 +7,6 @@ const SearchResults = () => {
   const { t, i18n } = useTranslation();
   const { results, handleShowForm, loading, error } = useContext(SearchContext);
   const [selectedResult, setSelectedResult] = useState(null);
-  const [showMore, setShowMore] = useState(false);
   const isDarkMode = document.body.classList.contains("dark");
   const [currentPage, setCurrentPage] = useState(1);
   const resultsPerPage = 10;
