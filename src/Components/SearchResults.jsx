@@ -44,7 +44,6 @@ const SearchResults = () => {
 
     return pageNumbers;
   };
-  const shouldShowAll = results.length > currentResults.length;
 
   return (
     <section
@@ -59,7 +58,7 @@ const SearchResults = () => {
       ) : (
         <>
           <ul className={styles.resultsList}>
-            {(shouldShowAll ? results : currentResults).map((result, index) => (
+            {currentResults.map((result, index) => (
               <li
                 key={index}
                 className={`${styles.resultsItem} ${
