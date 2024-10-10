@@ -1,11 +1,12 @@
 import React, { useContext } from "react";
-import { useTranslation } from "react-i18next"; 
-import styles from "../CSS/SearchForm.module.css"; 
+import { useTranslation } from "react-i18next";
+import styles from "../CSS/SearchForm.module.css";
 import { SearchContext } from "../Contexts/SearchContext";
 
 const SearchFormFields = () => {
   const { t } = useTranslation();
   const { formData, handleChange, loading, error } = useContext(SearchContext);
+
   return (
     <>
       <div className={styles.formGroup}>
@@ -16,7 +17,7 @@ const SearchFormFields = () => {
           type="text"
           id="fname"
           name="fname"
-          value={formData.fname}
+          value={formData.fname || ""}
           onChange={handleChange}
           className={styles.input}
           required
@@ -30,7 +31,7 @@ const SearchFormFields = () => {
           type="text"
           id="mname"
           name="mname"
-          value={formData.mname}
+          value={formData.mname || ""}
           onChange={handleChange}
           className={styles.input}
           required
@@ -44,7 +45,7 @@ const SearchFormFields = () => {
           type="text"
           id="lname"
           name="lname"
-          value={formData.lname}
+          value={formData.lname || ""}
           onChange={handleChange}
           className={styles.input}
           required
@@ -58,7 +59,7 @@ const SearchFormFields = () => {
           type="text"
           id="nat"
           name="nat"
-          value={formData.nat}
+          value={formData.nat || ""}
           onChange={handleChange}
           className={styles.input}
           required
@@ -71,7 +72,7 @@ const SearchFormFields = () => {
         <textarea
           id="description"
           name="description"
-          value={formData.description}
+          value={formData.description || ""}
           onChange={handleChange}
           className={styles.input}
           rows="4"
@@ -86,7 +87,7 @@ const SearchFormFields = () => {
           type="text"
           id="placeOfBirth"
           name="placeOfBirth"
-          value={formData.placeOfBirth}
+          value={formData.placeOfBirth || ""}
           onChange={handleChange}
           className={styles.input}
           required
@@ -100,7 +101,7 @@ const SearchFormFields = () => {
           type="number"
           id="score"
           name="score"
-          value={formData.score}
+          value={formData.score || ""}
           onChange={handleChange}
           className={styles.input}
           required

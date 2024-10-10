@@ -22,7 +22,6 @@ export const SearchProvider = ({ children }) => {
     setResults([]);
     const { fname, mname, lname, nat } = formData;
     const requestBody = { fname, mname, lname, nat };
-    console.log("Form Data Sent: ", formData, requestBody);
 
     try {
       const response = await fetch(
@@ -48,7 +47,7 @@ export const SearchProvider = ({ children }) => {
 
       // Set results to the transformed data
       setResults(apiResults);
-      console.log("API Response: ", data);
+   
 
       setFormVisible(false);
     } catch (err) {
