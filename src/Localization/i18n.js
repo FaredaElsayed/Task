@@ -25,7 +25,8 @@ const resources = {
       watch_list: "Watch List",
       date_of_birth: "Date OF Birth",
       gender: "Gender",
-      address:"Address",
+      address: "Address",
+      no_matched_results: "No Matched Results",
     },
   },
   ar: {
@@ -52,6 +53,7 @@ const resources = {
       date_of_birth: "تاريخ الميلاد",
       gender: "النوع",
       address: "العنوان",
+      no_matched_results:"لا توجد نتائج مطابقة",
     },
   },
 };

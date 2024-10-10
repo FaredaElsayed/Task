@@ -3,6 +3,7 @@
   flex-direction: column;
   gap: 1rem;
   padding: 1.25rem;
+  color: #292b2c;
   background-color: var(--bg-color, #f9f9f9);
   border-radius: 0.5rem;
   box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.1);
@@ -279,7 +280,8 @@
   font-size: 0.9rem;
 }
 
-.resultType, .resultStatus {
+.resultType,
+.resultStatus {
   padding: 0.2rem 0.5rem;
   border-radius: 0.3rem;
 }
@@ -303,11 +305,13 @@
   margin-bottom: 0.5rem;
 }
 
-.descriptions, .address {
+.descriptions,
+.address {
   margin-top: 1rem;
 }
 
-.descriptions h4, .address h4 {
+.descriptions h4,
+.address h4 {
   margin-bottom: 0.5rem;
   color: var(--secondary-text, #555);
 }
